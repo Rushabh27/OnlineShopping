@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		body {
+		background-color : #ffffff;
+		}
+			ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul1 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+lr
+ {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+lr a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+lr a:hover {
+  background-color: #111;
+}
+
+li a:hover {
+  background-color: #111;
+}
+	button{
+		font-size:30px;
+	}
+		</style>
+		<meta charset = "utf-8" >
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      {% load static %}
+      <link type="text/css" rel="stylesheet" href="{% static 'assets/css/materialize.min.css' %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Online Shop</title>
+	</head>
+	<body>
+		
+
+		<!-- <link rel="stylesheet" type="text/css" href="{% static '/loginmodule/style.css' %}"/>
+		<table align='center' width="1200" height="10">
+
+			
+		<!-- <td>
+		<h1 align="center"><a href='/admin'>ADMIN</a></h1>
+		</td> -->
+
+
+			<ul>
+  <li><a href="/onlineshoppingapp/index1">Home</a></li>
+  <li><a href="/orderdb/vieworder/">My Orders</a></li>
+				<lr><a href="#">Welcome To Online Shop {{request.session.userid}}</a></lr>
+  <li><a href="/cartdb/cart/">Cart</a></li>
+				{% if request.user.is_authenticated %}
+					<lr><a href='/loginmodule/logout/'>Log Out</a></lr>
+				{% endif %}
+
+ </ul>
+
+
+		</table>
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>

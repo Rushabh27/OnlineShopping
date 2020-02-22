@@ -1,0 +1,68 @@
+{% extends "base1.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	
+        <table border="0"  align="center">
+            
+            <thead>
+                <tr>
+                    <th colspan="5"><h1>Product details</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td  colspan="3" align="center"><font size="15">{{product1.pname}}</td>
+                </tr>   
+                <tr>
+                    <td colspan="10" rowspan="1" align="center"><br><img src="{{product1.url}}" style="width:300px; height:300px;"/>
+                    </td>
+                </tr>
+                    
+                <tr>    
+                    <td align="center"><font size="15"><br>PRICE</td>
+                    <td colspan="2" align="center"><font size="15"><br>Rs.{{product1.price}}</td>
+                </tr>
+                
+            
+                <tr>
+                    <td colspan="3" align="center"><p><font size="5">Delivery to your address within 7-10 days.</p></td> 
+                </tr>
+                <tr>
+                    <td colspan="3" align="center"><p><font size="5">10% cashback on debit card or credit card.</p></td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center"><p><font size="5">Brand Warrenty of 1 year.</p></td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center"><p><font size="5">10 Days of replacement policy.</p></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3" align="center"><form action="/cartdb/addtocart" method='post'>{% csrf_token %}
+                    <input type="hidden" value="{{product1.productid}}" name="productid">
+                    
+					<br><input type="submit" value="ADD TO CART" name="add to card" onclick="alert('Item is added to cart')" style="width: 500px;height: 30px"/></td></form>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center"><form action="/orderdb/placeorder" method='post'>{% csrf_token %}<input type="submit" value="BUY NOW" name="buy now" style="width: 500px;height: 30px"/>
+                                                                                                                    <input type="hidden" value="{{product1.productid}}" name="id">
+                    </form></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
+{% endblock %}

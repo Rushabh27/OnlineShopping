@@ -1,15 +1,74 @@
+ <html>
+ <head>
+ <style>
+  body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #ffffff;
+}
+.box{
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #191919;
+  text-align: center;
+}
+.box h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.box input[type = "text"],.box input[type = "password"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+  width: 280px;
+  border-color: #2ecc71;
+}
+.box input[type = "submit"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type = "submit"]:hover{
+  background: #2ecc71;
+}
 
- <body>
- {% load static %}
-
-		<link rel="stylesheet" type="text/css" href="{% static 'loginmodule/style.css' %}" >
+  </style>
+ </head>
+ <body >
+<!-- 
 		<form action='/registration/adduser/' method='post' >{% csrf_token %}
         <table border="0" width="1200" height="800" align="center">
                 <tr>
                     <th align='center'><h1>Enter Your Info</h1></th>
                 </tr>
 				<tr>
-                    <td align=''><h2>NAME :&nbsp;&nbsp;&nbsp;&nbsp;
+                    <td align=''><h2>NAME :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="name" style="width: 500px;height: 30px" required /></h2>(you have to use your name as username)</td>
 				</tr>
 				<tr>
@@ -18,16 +77,27 @@
 				</tr>
 				<tr>
                     <td align=''><h2>Email ID :&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" name="email" style="width: 250px;height: 30px" required/></h2></td>
+					<input type="text" pattern=".+@gmail.com" name="email" style="width: 250px;height: 30px" required/></h2></td>
 				</tr>
 				<tr>
                     <td align=''><h2>Password :&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="password" name="password" style="width: 250px;height: 30px" required /></h2></td>
+					<input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" style="width: 250px;height: 30px" required /></h2></td>
 				</tr>
 				<tr>
                     <th align='center'><h1><input type='submit' value='SIGNUP' style="align-content: center;width: 200px;height: 35px"/></h1></th>
                 </tr>
 		</table>
-		
+ -->
 		</form>
-</body>
+		<form class="box" action='/registration/adduser/' method='post'>{% csrf_token %}
+  <h1>Signup</h1>
+  <input type="text" name="name" placeholder="Username" required>
+   <input type="text" pattern="[6789][0-9]{9}" name="mo.no." placeholder="mobile no." required>
+   <input type="text" pattern=".+@gmail.com" name="email" placeholder="email" required>
+ 
+  <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" placeholder="Password" required>
+  
+  <input type="submit" name="signup" value="singup">
+</form>
+		</body>
+ </html>

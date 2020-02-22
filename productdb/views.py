@@ -8,8 +8,7 @@ from .models import Product
 
 class ProductListView(generic.ListView):
 	template_name='product_list.html'
-	model = Product
 
 def getproduct(request):
 	p=Product.objects.all()
-	return HttpResponseRedirect('/cartdb/cart' ,{ 'product':p})
+	return HttpResponseRedirect('/cartdb/cart' ,{'product':p})

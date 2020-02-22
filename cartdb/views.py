@@ -10,9 +10,11 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/loginmodule/login/')
 def addtocart(request):
-	username = request.session.get('userid')
+	userid = request.session.get('userid')
+	print("hiii",userid)
 	productid1 = request.POST.get('productid', '')
-	s=Cart(username=username,productid=productid1)
+	print(productid1)
+	s=Cart(username=userid,productid=productid1)
 	s.save()
 	f=request.POST.get('buy now','')
 	if(f=='BUY NOW'):
@@ -32,7 +34,9 @@ def cart(request):
 	pid=[]
 	for p in cart:
 		pid.append(p.productid)
-	product = Product.objects.filter(productid__in=pid)
+	print("lo",pid)
+	product = Product.objects.filter(productid=pid)
+	print("kol",product)
 	tp=0
 	for pr in product:
 		tp+=pr.price
